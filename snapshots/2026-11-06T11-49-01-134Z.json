@@ -1,0 +1,1401 @@
+{
+ "at": "2026-11-06T11:49:01.135Z",
+ "rpc": "https://ethereum-rpc.publicnode.com",
+ "prices": {
+  "USDC": 1,
+  "USDT": 1,
+  "DAI": 1,
+  "WETH": 2242.4,
+  "WBTC": 76092
+ },
+ "targets": [
+  {
+   "owner": "0x4553e3Bc6327006A63C5aA4cdAC887f66b6A433E",
+   "sources": [
+    "whales"
+   ],
+   "usd": 60374983.58921337,
+   "drainableUsd": 60374982.19969737,
+   "items": [
+    {
+     "symbol": "WETH",
+     "human": 26924.26962169879,
+     "drainable": 26924.26962169879,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 1.389516,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x29Fd045C087804190182815344B6bD598b8B06b4",
+   "sources": [
+    "whales"
+   ],
+   "usd": 34241400.03454288,
+   "drainableUsd": 34241400.03431864,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 450.00000042,
+     "drainable": 450.00000042,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 0.0015,
+     "drainable": 0.0015,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 0.00086,
+     "drainable": 0.00086,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x97E16B5d8C10af93F47f80bb5851276Bd524a609",
+   "sources": [
+    "whales"
+   ],
+   "usd": 18768693.033376,
+   "drainableUsd": 18768693.033376,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 18768693.033376,
+     "drainable": 18768693.033376,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x186E6139cd55902fAa3d70b4cd866E7237d2F6eD",
+   "sources": [
+    "whales"
+   ],
+   "usd": 17727918.37328624,
+   "drainableUsd": 17727918.373062,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 17727918.373062,
+     "drainable": 17727918.373062,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xB9DB0cc3D76902F19B5ff9216F5e602C5f32fc1C",
+   "sources": [
+    "whales"
+   ],
+   "usd": 15323016.289159,
+   "drainableUsd": 15123766.289159,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 15123766.289159,
+     "drainable": 15123766.289159,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 199250,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x43D2A401749093aEAf7a3E821699dF9BbCc7967d",
+   "sources": [
+    "whales"
+   ],
+   "usd": 9589580.966835639,
+   "drainableUsd": 9589580.9666114,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 17367.010111,
+     "drainable": 17367.010111,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 1389.422218,
+     "drainable": 1389.422218,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 125.7796422,
+     "drainable": 125.7796422,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x5A16552f59ea34E44ec81E58b3817833E9fD5436",
+   "sources": [
+    "whales"
+   ],
+   "usd": 8004544.518015348,
+   "drainableUsd": 8004544.518015348,
+   "items": [
+    {
+     "symbol": "DAI",
+     "human": 2500000.0762707484,
+     "drainable": 2500000.0762707484,
+     "approveP2": 4000000,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 72.34064608,
+     "drainable": 72.34064608,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 0.000001,
+     "drainable": 0.000001,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 1e-7,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xe1b63fa9f7152d7E2c59CE4C72972C89Deb3D67B",
+   "sources": [
+    "whales"
+   ],
+   "usd": 7983274.2680496,
+   "drainableUsd": 7983274.2680496,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 104.9160788,
+     "drainable": 104.9160788,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x4F0AA5900B8292273B2f9A178D5468f8048bb9a9",
+   "sources": [
+    "whales"
+   ],
+   "usd": 7609200.001,
+   "drainableUsd": 7609200.001,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 100,
+     "drainable": 100,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 0.001,
+     "drainable": 0.001,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xcB3248e23f5524eac3c67cA0ee1c4B3cc27C743e",
+   "sources": [
+    "whales"
+   ],
+   "usd": 6910240.965476591,
+   "drainableUsd": 6910240.965476591,
+   "items": [
+    {
+     "symbol": "WETH",
+     "human": 3080.576123682925,
+     "drainable": 3080.576123682925,
+     "approveP2": 1.461501637330903e+30,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 2357.06573,
+     "drainable": 2357.06573,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x69cE8721790Edbdcd2b4155D853d99d2680477B0",
+   "sources": [
+    "whales"
+   ],
+   "usd": 4490639.99561448,
+   "drainableUsd": 4486792.07572224,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 2732.831943,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 1115.087725,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 58.96535872,
+     "drainable": 58.96535872,
+     "approveP2": 73.33337796,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x15E7e224DCfa4dba59f342f01c70007B8a8F4AA0",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3957037.5751482206,
+   "drainableUsd": 3957037.575144839,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 52.00333231,
+     "drainable": 52.00333231,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 0.000005802853795228,
+     "drainable": 0.000005802853795228,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    },
+    {
+     "symbol": "DAI",
+     "human": 0.000003381824014932,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x675Cd2884b48a9700C42343F60f2BFfbb920474D",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3580341.48914016,
+   "drainableUsd": 3580341.48746192,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 47.05279776,
+     "drainable": 47.05279776,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 0.001454,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 0.000308,
+     "drainable": 0.000308,
+     "approveP2": 1.461501637330903e+42,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x958F67111e52fBf1D628bb6D8B84ced7d8F641D7",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3441504.5822878797,
+   "drainableUsd": 3440923.4899318796,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 580.897706,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 45.22056839,
+     "drainable": 45.22056839,
+     "approveP2": 1.461501637330903e+40,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 0.19465,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xCCc2E5785012D7DD3005dE1919b14504a2c2aBB4",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3403737.2255273997,
+   "drainableUsd": 3400465.8917183997,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 3271.333809,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 44.6888752,
+     "drainable": 44.6888752,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x5B0DBd62f7639BEf7A1ae1c4FF9408105946a9b9",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3381395.3969348,
+   "drainableUsd": 3381395.3969348,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 84927.5698,
+     "drainable": 84927.5698,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 24074.553043,
+     "drainable": 24074.553043,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 43.00574665,
+     "drainable": 43.00574665,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 2e-18,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xc391722cd67575eea7bcC238F0b21672F75cD69c",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3306709.17142772,
+   "drainableUsd": 3306709.17120348,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 43.45672569,
+     "drainable": 43.45672569,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x1E3e792CDE5C7248689511A674BD38A89e01e085",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3279626.216347507,
+   "drainableUsd": 3279624.990151267,
+   "items": [
+    {
+     "symbol": "DAI",
+     "human": 3279611.814821467,
+     "drainable": 3279611.814821467,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 1.225972,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 0.00017315,
+     "drainable": 0.00017315,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x8813c2a42DdaFd151178B52000e6de42Fa8DeFC0",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3534507.481379058,
+   "drainableUsd": 3226213.051379058,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 308294.43,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 2463.928941,
+     "drainable": 2463.928941,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1437.6333938806895,
+     "drainable": 1437.6333938806895,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x8792dCF57D3A9b88bC9169D6D6A7a732C2e00FF0",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3136117.8921394004,
+   "drainableUsd": 3136117.8921394004,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 60678.461763,
+     "drainable": 60678.461763,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 40.41738198,
+     "drainable": 40.41738198,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 0.00053,
+     "drainable": 0.00053,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 1e-7,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x7d1FAeB1cBDe3764B38702D127F163141Ec301b7",
+   "sources": [
+    "whales"
+   ],
+   "usd": 2993613.5423027603,
+   "drainableUsd": 2993613.54207252,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 39.34202731,
+     "drainable": 39.34202731,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 0.000006,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xbdc3c47122d033ccd1Ad7b986071187Be597fF72",
+   "sources": [
+    "whales"
+   ],
+   "usd": 2990415.6338049998,
+   "drainableUsd": 2990415.5999999996,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 39.3,
+     "drainable": 39.3,
+     "approveP2": 1.461501637330903e+40,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 0.033425,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 0.00038,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xf884d30F2e2f44EA749FD62938b1eAf50aC5E1D7",
+   "sources": [
+    "whales"
+   ],
+   "usd": 2896625.7879780005,
+   "drainableUsd": 2896595.2076990004,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 38.06686975,
+     "drainable": 38.06686975,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 30.580279,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 10.954682,
+     "drainable": 10.954682,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x47eD3df3471C004642ca393712a1b4c4d965ec8B",
+   "sources": [
+    "whales"
+   ],
+   "usd": 2387384.58041945,
+   "drainableUsd": 2387384.58041945,
+   "items": [
+    {
+     "symbol": "DAI",
+     "human": 2387384.58041945,
+     "drainable": 2387384.58041945,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x23b4cD421B7cB7d274689B2A7c100BAF8546941B",
+   "sources": [
+    "whales"
+   ],
+   "usd": 2005137.3374704248,
+   "drainableUsd": 2005137.3374704248,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 951012.037752,
+     "drainable": 951012.037752,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 470.0879859607673,
+     "drainable": 470.0879859607673,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xC2724e73741D33D057E7075fB107E23f0D69581D",
+   "sources": [
+    "whales"
+   ],
+   "usd": 1998324.8270157774,
+   "drainableUsd": 1998324.8270157774,
+   "items": [
+    {
+     "symbol": "DAI",
+     "human": 1998324.8270157774,
+     "drainable": 1998324.8270157774,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x9b57BCcd5A3863EB4e18E5EB7eD3cf96162ef087",
+   "sources": [
+    "whales"
+   ],
+   "usd": 1925132.9524563262,
+   "drainableUsd": 1918656.5801523263,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 6476.372304,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 3985.686713,
+     "drainable": 3985.686713,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 853.8489535494676,
+     "drainable": 853.8489535494676,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x0eFcB2772919077B9C4A56854764dc8d70d75aF6",
+   "sources": [
+    "whales"
+   ],
+   "usd": 1775535.8061095437,
+   "drainableUsd": 1775535.8061095437,
+   "items": [
+    {
+     "symbol": "DAI",
+     "human": 1775535.8061095437,
+     "drainable": 1775535.8061095437,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xC05F982D1aa2efeD84A31BFB8C2331651Ca3a1d5",
+   "sources": [
+    "whales"
+   ],
+   "usd": 1687180.667773756,
+   "drainableUsd": 1687180.667773756,
+   "items": [
+    {
+     "symbol": "DAI",
+     "human": 1687180.667773756,
+     "drainable": 1687180.667773756,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xF285694d36501Ce2EbcB094679620a4777332d53",
+   "sources": [
+    "whales"
+   ],
+   "usd": 3676108.53043684,
+   "drainableUsd": 1552460.6104000001,
+   "items": [
+    {
+     "symbol": "WETH",
+     "human": 692.321,
+     "drainable": 692.321,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 27.90895127,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xd2ae9DF04234e52f7c522aF83683E40C8b9D4335",
+   "sources": [
+    "whales"
+   ],
+   "usd": 1236277.4519499494,
+   "drainableUsd": 1236258.1230309494,
+   "items": [
+    {
+     "symbol": "WETH",
+     "human": 551.310258219296,
+     "drainable": 551.310258219296,
+     "approveP2": 1.461501637330903e+30,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 19.328919,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x08d49c032f268D3AC4265d1909c28DfaAb440040",
+   "sources": [
+    "whales"
+   ],
+   "usd": 1222508.2455369276,
+   "drainableUsd": 1222508.2455369066,
+   "items": [
+    {
+     "symbol": "WETH",
+     "human": 486.4510664897193,
+     "drainable": 486.4510664897193,
+     "approveP2": 1.461501637330903e+30,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 5.400569,
+     "drainable": 5.400569,
+     "approveP2": 1.461501637330903e+42,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 1.73060208,
+     "drainable": 1.73060208,
+     "approveP2": 1.461501637330903e+40,
+     "expiration": 0
+    },
+    {
+     "symbol": "DAI",
+     "human": 2.0894331358e-8,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xC1CdaA40c85d37B354BF8a016C90265241DF48b6",
+   "sources": [
+    "whales"
+   ],
+   "usd": 935686.596572,
+   "drainableUsd": 896960.0002,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 38726.596372,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 400,
+     "drainable": 400,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 0.0002,
+     "drainable": 0.0002,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x72e7BB93E73b2885a22CA29c34759361399a5C0e",
+   "sources": [
+    "whales"
+   ],
+   "usd": 808525.5734148254,
+   "drainableUsd": 795878.9803289837,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 5000.000843,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 354.9228417449981,
+     "drainable": 354.9228417449981,
+     "approveP2": 1.461501637330903e+30,
+     "expiration": 0
+    },
+    {
+     "symbol": "DAI",
+     "human": 19.999999841674825,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 17.392243,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 0.1,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x0667538F035093bB7bc3d7e912295eBf7d416a9e",
+   "sources": [
+    "hot"
+   ],
+   "usd": 340036.07261112006,
+   "drainableUsd": 340036.07261112006,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 289181.531963,
+     "drainable": 289181.531963,
+     "approveP2": 1356832.968732,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 50854.456186,
+     "drainable": 50854.456186,
+     "approveP2": 213845.966003,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 0.00000111,
+     "drainable": 0.00000111,
+     "approveP2": 1.93911751,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x61723BDE60E2f018dE6cE3bEDD825DFc030c5119",
+   "sources": [
+    "hot"
+   ],
+   "usd": 78380.28253339588,
+   "drainableUsd": 78380.2807936,
+   "items": [
+    {
+     "symbol": "WBTC",
+     "human": 1.03007255,
+     "drainable": 1.03007255,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 0.000319,
+     "drainable": 0.000319,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 7.75863301823e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x69797731508079240Ef42b6F3235656fB3E6e119",
+   "sources": [
+    "hot"
+   ],
+   "usd": 71904.01667,
+   "drainableUsd": 71904.01667,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 71904.01667,
+     "drainable": 71904.01667,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x04a8F552E6D13FD00dEF492D243198e841a8F107",
+   "sources": [
+    "hot"
+   ],
+   "usd": 60471.66337545078,
+   "drainableUsd": 59228.526126,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 59228.526126,
+     "drainable": 59228.526126,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 0.5543780099227542,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xdf3B1ba08C2D43765a4B9978253A18d43656e3df",
+   "sources": [
+    "hot"
+   ],
+   "usd": 53950.287343,
+   "drainableUsd": 53950.287343,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 53950.287343,
+     "drainable": 53950.287343,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x2f9206Eac5aa5748f83228C978b122277f36d254",
+   "sources": [
+    "hot"
+   ],
+   "usd": 48073.852875,
+   "drainableUsd": 48073.852875,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 48073.852875,
+     "drainable": 48073.852875,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x111117C5c0A3A28efE871fEA13Dc093909D11111",
+   "sources": [
+    "hot"
+   ],
+   "usd": 47338.28666148,
+   "drainableUsd": 47338.28666148,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 47338.272204,
+     "drainable": 47338.272204,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WBTC",
+     "human": 1.9e-7,
+     "drainable": 1.9e-7,
+     "approveP2": 1.157920892373162e+69,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x0bDc22dCE0581044Fce045ACb7E783d2E0F5a930",
+   "sources": [
+    "hot"
+   ],
+   "usd": 35893.089647,
+   "drainableUsd": 35893.089647,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 35893.089647,
+     "drainable": 35893.089647,
+     "approveP2": 49630176778.8839,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x14d8a9b0E561B0b634bEEb219cF70cf15A443673",
+   "sources": [
+    "hot"
+   ],
+   "usd": 35310.515334,
+   "drainableUsd": 35310.515334,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 35310.515334,
+     "drainable": 35310.515334,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xE1f8aFc92644Bfe77080D7DCb0f936F578E00F53",
+   "sources": [
+    "hot"
+   ],
+   "usd": 32531.59721592383,
+   "drainableUsd": 32521.430482,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 32521.430482,
+     "drainable": 32521.430482,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 0.004533862791575963,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xF511eFf8A58d18031d43019BC2AA4a06802e216E",
+   "sources": [
+    "hot"
+   ],
+   "usd": 27702.64593,
+   "drainableUsd": 27702.64593,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 17750.700109,
+     "drainable": 17750.700109,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 9951.945821,
+     "drainable": 9951.945821,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x04df95C558115B6e9d6814380177ed38FF7C6F62",
+   "sources": [
+    "hot"
+   ],
+   "usd": 25920.340757,
+   "drainableUsd": 25920.340757,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 25920.340757,
+     "drainable": 25920.340757,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x68BA1B4dCe4D2B3aBDF8744e584141FbDd7a68DF",
+   "sources": [
+    "hot"
+   ],
+   "usd": 20014.15522024,
+   "drainableUsd": 20014.154996,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 20014.154996,
+     "drainable": 20014.154996,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xcC3A6D8281579674486F3F0e33955aCD3AA6772F",
+   "sources": [
+    "hot"
+   ],
+   "usd": 162573.7305977544,
+   "drainableUsd": 20000,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 22522.690313,
+     "drainable": 20000,
+     "approveP2": 20000,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 62.455867927111306,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 0.002045,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0xe98c3e5847085139B4e6B8A59014DCe39517edED",
+   "sources": [
+    "hot"
+   ],
+   "usd": 19908.53605799719,
+   "drainableUsd": 19908.53605799719,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 19898.4,
+     "drainable": 19898.4,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDC",
+     "human": 9.974742,
+     "drainable": 9.974742,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 0.000071938992681789,
+     "drainable": 0.000071938992681789,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x2e9aF01671e56e48e0CE30369DD5663d0B082503",
+   "sources": [
+    "hot"
+   ],
+   "usd": 11741.219879240001,
+   "drainableUsd": 11741.219879240001,
+   "items": [
+    {
+     "symbol": "USDT",
+     "human": 11741.219655,
+     "drainable": 11741.219655,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "WETH",
+     "human": 1e-7,
+     "drainable": 1e-7,
+     "approveP2": 1.157920892373162e+59,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x7bC04fdA3734a51bbBb803328B096806Ca866355",
+   "sources": [
+    "hot"
+   ],
+   "usd": 11620.656146,
+   "drainableUsd": 11620.656146,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 11620.656146,
+     "drainable": 11620.656146,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    }
+   ]
+  },
+  {
+   "owner": "0x054cFd07600cb02A785bFF365c38e8E00dF5435a",
+   "sources": [
+    "hot"
+   ],
+   "usd": 217.290837,
+   "drainableUsd": 153.13255,
+   "items": [
+    {
+     "symbol": "USDC",
+     "human": 153.13255,
+     "drainable": 153.13255,
+     "approveP2": 1.157920892373162e+71,
+     "expiration": 0
+    },
+    {
+     "symbol": "USDT",
+     "human": 64.158287,
+     "drainable": 0,
+     "approveP2": 0,
+     "expiration": 0
+    }
+   ]
+  }
+ ]
+}

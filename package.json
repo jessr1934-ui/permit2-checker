@@ -1,0 +1,22 @@
+{
+  "name": "eth-sweeper",
+  "version": "1.0.0",
+  "description": "**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "server": "node server.mjs",
+    "demo": "node ops/demo.mjs",
+    "deploy": "node ops/deploy.mjs",
+    "test": "forge test",
+    "demo7702": "node ops/demo7702.mjs"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "ethers": "^6.17.0"
+  }
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "owner": "0x87898B0d8aB25F5034e045d056027647C5494584",
+    "score": 1437,
+    "eth": "0.478326156549739006",
+    "holdings": [
+      {
+        "symbol": "USDT",
+        "human": 1.989899
+      }
+    ],
+    "allowances": []
+  },
+  {
+    "owner": "0x1D7Ce995313E3277C76bDeA9448E43603e382409",
+    "score": 272,
+    "eth": "0.035850728086351519",
+    "holdings": [
+      {
+        "symbol": "USDC",
+        "human": 163.467699
+      },
+      {
+        "symbol": "DAI",
+        "human": 0.4731844807153069
+      },
+      {
+        "symbol": "WBTC",
+        "human": 0.00000123
+      }
+    ],
+    "allowances": []
+  },
+  {
+    "owner": "0x5BC7bdE4066faeeA1554E8200b3963FD5775bDcB",
+    "score": 181,
+    "eth": "0.000676479518395413",
+    "holdings": [
+      {
+        "symbol": "USDC",
+        "human": 179.379967
+      }
+    ],
+    "allowances": []
+  },
+  {
+    "owner": "0x41759F7e5ce083C2B067e5408f7AD2D47648eCb2",
+    "score": 58,
+    "eth": "0.000442485742382022",
+    "holdings": [
+      {
+        "symbol": "USDC",
+        "human": 56.186824
+      }
+    ],
+    "allowances": []
+  },
+  {
+    "owner": "0x7Ca252e379A26767b9FBb0FF30aCCC26DC2B45D7",
+    "score": 50,
+    "eth": "0.005160413193184231",
+    "holdings": [
+      {
+        "symbol": "USDC",
+        "human": 34.095914
+      }
+    ],
+    "allowances": []
+  },
+  {
+    "owner": "0x9b48255D4Cca9DFb4aF9e0fB60C9278e9a14Ab7C",
+    "score": 21,
+    "eth": "0.003402492653773833",
+    "holdings": [
+      {
+        "symbol": "USDC",
+        "human": 10.537486
+      }
+    ],
+    "allowances": []
+  },
+  {
+    "owner": "0x9f4Fd67a3aeec74E4d1C8104A19fC56160d2e7AA",
+    "score": 14,
+    "eth": "0.003248664272311204",
+    "holdings": [
+      {
+        "symbol": "USDT",
+        "human": 4.522834
+      }
+    ],
+    "allowances": []
+  },
+  {
+    "owner": "0x825b51cD53B3F94Aa24108fbde2E5E8623FfD897",
+    "score": 2,
+    "eth": "0.000460976051381439",
+    "holdings": [
+      {
+        "symbol": "USDC",
+        "human": 1
+      }
+    ],
+    "allowances": []
+  }
+]

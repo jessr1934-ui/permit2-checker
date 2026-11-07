@@ -1,0 +1,208 @@
+[
+  {
+    "owner": "0x0667538F035093bB7bc3d7e912295eBf7d416a9e",
+    "usd": 340035.98814900004,
+    "items": [
+      {
+        "symbol": "USDC",
+        "human": 50854.456186
+      },
+      {
+        "symbol": "USDT",
+        "human": 289181.531963
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x69797731508079240Ef42b6F3235656fB3E6e119",
+    "usd": 103749.959897,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 103749.959897
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x61723BDE60E2f018dE6cE3bEDD825DFc030c5119",
+    "usd": 78440.0246825,
+    "items": [
+      {
+        "symbol": "WBTC",
+        "human": 1.03007255
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x04a8F552E6D13FD00dEF492D243198e841a8F107",
+    "usd": 59228.526126,
+    "items": [
+      {
+        "symbol": "USDC",
+        "human": 59228.526126
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0xdf3B1ba08C2D43765a4B9978253A18d43656e3df",
+    "usd": 53950.287343,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 53950.287343
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x2f9206Eac5aa5748f83228C978b122277f36d254",
+    "usd": 48073.852875,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 48073.852875
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x111117C5c0A3A28efE871fEA13Dc093909D11111",
+    "usd": 47338.272204,
+    "items": [
+      {
+        "symbol": "USDC",
+        "human": 47338.272204
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x0bDc22dCE0581044Fce045ACb7E783d2E0F5a930",
+    "usd": 35893.089647,
+    "items": [
+      {
+        "symbol": "USDC",
+        "human": 35893.089647
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x14d8a9b0E561B0b634bEEb219cF70cf15A443673",
+    "usd": 35310.515334,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 35310.515334
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0xE1f8aFc92644Bfe77080D7DCb0f936F578E00F53",
+    "usd": 32521.430482,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 32521.430482
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0xF511eFf8A58d18031d43019BC2AA4a06802e216E",
+    "usd": 27702.64593,
+    "items": [
+      {
+        "symbol": "USDC",
+        "human": 17750.700109
+      },
+      {
+        "symbol": "USDT",
+        "human": 9951.945821
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x04df95C558115B6e9d6814380177ed38FF7C6F62",
+    "usd": 25920.340757,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 25920.340757
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x68BA1B4dCe4D2B3aBDF8744e584141FbDd7a68DF",
+    "usd": 20014.154996,
+    "items": [
+      {
+        "symbol": "USDC",
+        "human": 20014.154996
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0xcC3A6D8281579674486F3F0e33955aCD3AA6772F",
+    "usd": 20000,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 20000
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0xe98c3e5847085139B4e6B8A59014DCe39517edED",
+    "usd": 19898.4,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 19898.4
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x054cFd07600cb02A785bFF365c38e8E00dF5435a",
+    "usd": 18453.13255,
+    "items": [
+      {
+        "symbol": "USDC",
+        "human": 18453.13255
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x2e9aF01671e56e48e0CE30369DD5663d0B082503",
+    "usd": 11741.219655,
+    "items": [
+      {
+        "symbol": "USDT",
+        "human": 11741.219655
+      }
+    ],
+    "txCount": 0
+  },
+  {
+    "owner": "0x7bC04fdA3734a51bbBb803328B096806Ca866355",
+    "usd": 11620.656146,
+    "items": [
+      {
+        "symbol": "USDC",
+        "human": 11620.656146
+      }
+    ],
+    "txCount": 0
+  }
+]

