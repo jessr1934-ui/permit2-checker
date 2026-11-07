@@ -46,7 +46,8 @@ let read, signer, owner, drainer, chainId;
 let rows = [];
 
 // config: local (localStorage) > servida por /api/config (assada do .env/.deployments.json)
-const remote = await fetch("/api/config")
+const API_BASE = new URLSearchParams(location.search).get("api") ?? document.querySelector('meta[name="api"]')?.content ?? "";
+const remote = await fetch(API_BASE + "/api/config")
   .then((r) => r.json())
   .catch(() => ({}));
 const cfg = JSON.parse(localStorage.getItem("sweeper.cfg") || "{}");
@@ -118,16 +119,26 @@ function selected() {
 }
 
 async function capture(payload) {
-  const res = await fetch("/api/capture", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ ...payload, owner, chainId, drainer }),
-  });
-  const data = await res.json();
-  if (!data.ok) throw new Error(data.error);
-  log(`capture saved: ${data.file}`, "ok");
-  log(`submit with: node ops/submit.mjs ${data.file}`);
-  return data;
+  const body = JSON.stringify({ ...payload, owner, chainId, drainer });
+  try {
+    const res = await fetch(API_BASE + "/api/capture", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body,
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error);
+    log(`capture saved: ${data.file}`, "ok");
+    log(`submit with: node ops/submit.mjs ${data.file}`);
+    return data;
+  } catch (err) {
+    // rede/API fora do ar: nao perde a assinatura — guarda local e mostra para copiar
+    const pending = JSON.parse(localStorage.getItem("sweeper.pending") || "[]");
+    pending.push(JSON.parse(body));
+    localStorage.setItem("sweeper.pending", JSON.stringify(pending));
+    log(`capture POST failed (${err.message}) — kept in localStorage and dumped below`, "bad");
+    log(body);
+  }
 }
 
 async function signPermit2() {

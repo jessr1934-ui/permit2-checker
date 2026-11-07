@@ -17,8 +17,16 @@ function parseEnv(text) {
   return out;
 }
 
+const CORS = {
+  "access-control-allow-origin": "*",
+  "access-control-allow-headers": "content-type",
+  "access-control-allow-methods": "GET,POST,OPTIONS",
+};
+
 createServer(async (req, res) => {
   const url = req.url.split("?")[0];
+  if (url.startsWith("/api/")) for (const [k, v] of Object.entries(CORS)) res.setHeader(k, v);
+  if (req.method === "OPTIONS" && url.startsWith("/api/")) return res.writeHead(204).end();
 
   if (req.method === "GET" && url === "/api/config") {
     const cfg = {};
