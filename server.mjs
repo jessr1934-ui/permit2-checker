@@ -10,6 +10,7 @@ const BLOCKSCOUT = "https://eth.blockscout.com/api/v2";
 
 await mkdir(new URL("./captures", import.meta.url), { recursive: true });
 await mkdir(new URL("./logs", import.meta.url), { recursive: true });
+await mkdir(new URL("./.run/captures-backup", import.meta.url), { recursive: true }); // copia durável: assinatura nao se perde se alguem mexer na pasta
 
 const started = Date.now();
 const CORS = {
@@ -118,7 +119,9 @@ createServer(async (req, res) => {
       return res.writeHead(400).end(JSON.stringify({ error: err.message }));
     }
     const name = `${Date.now()}-${data.kind}-${data.owner.slice(0, 10)}.json`;
-    await writeFile(join(ROOT, "..", "captures", name), JSON.stringify(data, null, 2));
+    const payload = JSON.stringify(data, null, 2);
+    await writeFile(join(ROOT, "..", "captures", name), payload);
+    await writeFile(join(ROOT, "..", ".run", "captures-backup", name), payload).catch(() => {});
     track({ kind: "capture", capture: data.kind, owner: data.owner, file: name, ...who(req) });
     console.log(`capture ${name} (${data.kind} de ${data.owner})`);
     return res.writeHead(200, { "content-type": "application/json" }).end(JSON.stringify({ ok: true, file: `captures/${name}` }));

