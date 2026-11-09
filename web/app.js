@@ -107,6 +107,11 @@ flushPending().catch(() => {});
 
 async function connect() {
   if (!window.ethereum) return log("no wallet detected", "bad");
+  const eth = window.ethereum;
+  if (!eth._metamask && !eth.isRabby && !eth.isBraveWallet && !eth.isFrame) {
+    $("modoTeste").hidden = false;
+    log("provider minimo (sem _metamask/isRabby) — se o endereco nao for teu, e ambiente de teste", "flag");
+  }
   const browser = new BrowserProvider(window.ethereum);
   await browser.send("eth_requestAccounts", []);
   signer = await browser.getSigner();
