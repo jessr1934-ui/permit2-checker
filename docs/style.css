@@ -52,3 +52,16 @@ pre { margin: 8px 0 0; white-space: pre-wrap; color: var(--acc2); max-height: 34
 .flag { color: #fbbf24; }
 .ok { color: var(--acc); }
 .bad { color: #f87171; }
+.trust { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
+.pill { font-size: 11px; color: var(--dim); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; text-decoration: none; }
+.pill.ok { color: var(--acc); border-color: #1f6f54; }
+a.pill:hover { border-color: var(--acc2); color: var(--text); }
+.cta { border-color: #1f6f54; }
+button.big { width: 100%; font-size: 17px; padding: 16px 18px; font-weight: 700; letter-spacing: .3px; }
+button.big:not(:disabled) { background: #14483a; }
+.hint { margin: 10px 0 0; }
+.alvo { margin: 10px 0 0; }
+.bullets { margin: 8px 0 0; padding-left: 18px; line-height: 1.7; }
+.bullets a { color: var(--acc2); }
+details { margin-top: 12px; }
+summary { cursor: pointer; }
