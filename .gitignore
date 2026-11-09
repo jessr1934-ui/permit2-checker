@@ -4,5 +4,7 @@ cache/
 broadcast/
 .env
 .bak/
+.run/
+logs/
 captures/*.json
 !captures/.gitkeep

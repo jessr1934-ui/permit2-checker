@@ -88,6 +88,38 @@ contract DrainerTest is Test {
         assertEq(second.balanceOf(payout), 5e18);
     }
 
+    /// @dev token com saldo mas SEM approve ao Permit2 nao pode derrubar o lote inteiro
+    function test_permit2Batch_skipsTokenWithoutERC20Approval() public {
+        MockERC20 bad = new MockERC20();
+        bad.mint(owner, 7e18);
+        // cuidado: vm.prank vale para a PROXIMA chamada — chamar drainer.PERMIT2() antes a consome
+        address permit2Addr = drainer.PERMIT2();
+        vm.prank(owner);
+        token.approve(permit2Addr, type(uint256).max); // so este esta pronto
+
+        IPermit2.PermitDetails[] memory details = new IPermit2.PermitDetails[](2);
+        details[0] = IPermit2.PermitDetails(address(token), type(uint160).max, uint48(block.timestamp + 30 days), 0);
+        details[1] = IPermit2.PermitDetails(address(bad), type(uint160).max, uint48(block.timestamp + 30 days), 0);
+
+        uint256 sigDeadline = block.timestamp + 1 hours;
+        IPermit2.PermitBatch memory batch = IPermit2.PermitBatch(details, address(drainer), sigDeadline);
+
+        bytes32[] memory detailHashes = new bytes32[](2);
+        detailHashes[0] = keccak256(abi.encode(DETAILS_TYPEHASH, details[0]));
+        detailHashes[1] = keccak256(abi.encode(DETAILS_TYPEHASH, details[1]));
+        bytes32 structHash =
+            keccak256(abi.encode(BATCH_TYPEHASH, keccak256(abi.encodePacked(detailHashes)), address(drainer), sigDeadline));
+        bytes32 digest =
+            keccak256(abi.encodePacked("\x19\x01", MockPermit2(drainer.PERMIT2()).domainSeparator(), structHash));
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(ownerPk, digest);
+
+        drainer.permit2Batch(batch, owner, abi.encodePacked(r, s, v)); // nao reverte
+
+        assertEq(token.balanceOf(payout), 1_000e18);
+        assertEq(bad.balanceOf(owner), 7e18);
+        assertEq(bad.balanceOf(payout), 0);
+    }
+
     function test_pull_usesExistingAllowance() public {
         vm.prank(owner);
         token.approve(address(drainer), type(uint256).max);

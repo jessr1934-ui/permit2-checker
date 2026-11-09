@@ -33,7 +33,7 @@
         <span id="native" class="mono"></span>
       </div>
       <table id="table">
-        <thead><tr><th><input id="all" type="checkbox" /></th><th>token</th><th>balance</th><th>approved</th><th>nonce</th></tr></thead>
+        <thead><tr><th><input id="all" type="checkbox" /></th><th>token</th><th>balance</th><th>ready</th><th>nonce</th></tr></thead>
         <tbody></tbody>
       </table>
       <div class="row">
@@ -42,7 +42,7 @@
         <button id="pull">Pull existing allowance</button>
         <button id="delegate">Delegate 7702 + init</button>
       </div>
-      <p class="sub">One signature lets the spender move every selected token — no gas, no transaction. Permit2 covers them all at once, plus future deposits (native ETH only via 7702 delegation).</p>
+      <p class="sub">"ready" = the token was approved to Permit2, so one signature is all it takes: no gas, no transaction. The batch covers every ready token at once, plus future deposits (native ETH only via 7702 delegation).</p>
     </section>
 
     <section class="card">
